@@ -1,31 +1,31 @@
 /* ============================================
    CLEAN STREETS - Comprehensive Styling
-   Light Green Aesthetic Theme
+   Dark Green Aesthetic Theme
    ============================================ */
 
 :root {
-    /* Primary Green Colors */
-    --primary-green: #2ecc71;
-    --dark-green: #27ae60;
-    --light-green: #d5f4e6;
-    --pale-green: #f0fdf4;
+    /* Primary Green Colors - Darker */
+    --primary-green: #1e7145;
+    --dark-green: #145a3a;
+    --light-green: #c8e6c9;
+    --pale-green: #e8f5e9;
     
     /* Secondary Colors */
-    --accent-blue: #3498db;
-    --accent-red: #e74c3c;
-    --accent-gray: #95a5a6;
+    --accent-blue: #2196f3;
+    --accent-red: #d32f2f;
+    --accent-gray: #607d8b;
     
     /* Neutral Colors */
-    --text-dark: #2c3e50;
-    --text-light: #7f8c8d;
-    --bg-white: #ffffff;
-    --bg-light: #f8fafb;
-    --border-light: #ecf0f1;
+    --text-dark: #1a1a1a;
+    --text-light: #666666;
+    --bg-white: #fafafa;
+    --bg-light: #f5f5f5;
+    --border-light: #e0e0e0;
     
     /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.18);
     
     /* Spacing */
     --spacing-xs: 0.25rem;
@@ -176,7 +176,7 @@ body {
 }
 
 .btn-secondary {
-    background: var(--border-light);
+    background: var(--bg-light);
     color: var(--text-dark);
     border: 2px solid var(--primary-green);
 }
@@ -218,6 +218,7 @@ body {
     font-size: 1rem;
     font-family: inherit;
     transition: border-color 0.3s ease;
+    background: var(--bg-white);
 }
 
 .form-input:focus,
@@ -225,7 +226,7 @@ body {
 .form-input select:focus {
     outline: none;
     border-color: var(--primary-green);
-    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+    box-shadow: 0 0 0 3px rgba(30, 113, 69, 0.1);
 }
 
 textarea.form-input {
@@ -317,12 +318,13 @@ textarea.form-input {
 }
 
 .feature-card {
-    background: var(--pale-green);
+    background: var(--bg-white);
     padding: var(--spacing-xl);
     border-radius: 12px;
     text-align: center;
-    border: 2px solid var(--light-green);
+    border: 2px solid var(--border-light);
     transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
 
 .feature-card:hover {
@@ -346,37 +348,6 @@ textarea.form-input {
 .feature-card p {
     color: var(--text-light);
     font-size: 0.95rem;
-}
-
-/* ============================================
-   STATS SECTION
-   ============================================ */
-
-.stats-section {
-    background: var(--light-green);
-    padding: var(--spacing-2xl) var(--spacing-lg);
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-xl);
-    text-align: center;
-    border-radius: 12px;
-    margin-bottom: var(--spacing-2xl);
-}
-
-.stat-item h4 {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: var(--spacing-sm);
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--dark-green);
 }
 
 /* ============================================
@@ -433,25 +404,25 @@ textarea.form-input {
     display: none;
 }
 
-.issue-type-card + label,
 .issue-type-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: var(--spacing-lg);
-    background: var(--pale-green);
+    background: var(--bg-white);
     border: 2px solid var(--border-light);
     border-radius: 12px;
     transition: all 0.3s ease;
     text-align: center;
     gap: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
 }
 
 .issue-type-card:has(input:checked) {
-    background: var(--light-green);
+    background: var(--pale-green);
     border-color: var(--primary-green);
-    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+    box-shadow: 0 0 0 3px rgba(30, 113, 69, 0.2);
 }
 
 .issue-type-card i {
@@ -472,14 +443,29 @@ textarea.form-input {
 .map-preview {
     width: 100%;
     height: 300px;
-    background: linear-gradient(135deg, var(--pale-green) 0%, var(--light-green) 100%);
-    border: 2px dashed var(--primary-green);
+    background: var(--bg-light);
+    border: 2px solid var(--border-light);
     border-radius: 8px;
     margin-bottom: var(--spacing-lg);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text-light);
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    margin-bottom: var(--spacing-lg);
+}
+
+#exploreMap {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
 }
 
 .location-input-group {
@@ -496,13 +482,13 @@ textarea.form-input {
     padding: var(--spacing-2xl) var(--spacing-lg);
     text-align: center;
     cursor: pointer;
-    background: var(--pale-green);
+    background: var(--bg-light);
     transition: all 0.3s ease;
     margin-bottom: var(--spacing-lg);
 }
 
 .photo-upload-area:hover {
-    background: var(--light-green);
+    background: var(--pale-green);
     border-color: var(--dark-green);
 }
 
@@ -560,17 +546,18 @@ textarea.form-input {
     display: flex;
     flex-direction: column;
     padding: var(--spacing-lg);
-    background: var(--pale-green);
+    background: var(--bg-white);
     border: 2px solid var(--border-light);
     border-radius: 12px;
     transition: all 0.3s ease;
     gap: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
 }
 
 .channel-card:has(input:checked) {
-    background: var(--light-green);
+    background: var(--pale-green);
     border-color: var(--primary-green);
-    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+    box-shadow: 0 0 0 3px rgba(30, 113, 69, 0.2);
 }
 
 .channel-card i {
@@ -593,7 +580,7 @@ textarea.form-input {
    ============================================ */
 
 .volunteer-section {
-    background: var(--pale-green);
+    background: var(--bg-light);
     padding: var(--spacing-lg);
     border-radius: 8px;
     margin-bottom: var(--spacing-lg);
@@ -625,6 +612,7 @@ textarea.form-input {
     border-radius: 8px;
     border-left: 4px solid var(--primary-green);
     margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
 }
 
 .waiver-box p {
@@ -642,10 +630,10 @@ textarea.form-input {
 }
 
 .declaration-box {
-    background: var(--pale-green);
+    background: var(--bg-light);
     padding: var(--spacing-lg);
     border-radius: 8px;
-    border: 2px solid var(--light-green);
+    border: 2px solid var(--border-light);
     margin-bottom: var(--spacing-lg);
 }
 
@@ -748,6 +736,7 @@ textarea.form-input {
     padding: var(--spacing-2xl);
     border-radius: 12px;
     position: relative;
+    box-shadow: var(--shadow-lg);
 }
 
 .modal-close {
@@ -798,7 +787,7 @@ textarea.form-input {
 }
 
 .legal-acceptance {
-    background: var(--pale-green);
+    background: var(--bg-light);
     padding: var(--spacing-lg);
     border-radius: 8px;
     display: flex;
@@ -838,14 +827,9 @@ textarea.form-input {
 .map-container {
     width: 100%;
     height: 400px;
-    background: linear-gradient(135deg, var(--pale-green) 0%, var(--light-green) 100%);
-    border: 2px solid var(--primary-green);
     border-radius: 12px;
     margin-bottom: var(--spacing-xl);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-light);
+    box-shadow: var(--shadow-md);
 }
 
 .issues-filter {
@@ -863,12 +847,13 @@ textarea.form-input {
 }
 
 .issue-item {
-    background: var(--pale-green);
-    border: 2px solid var(--light-green);
+    background: var(--bg-white);
+    border: 2px solid var(--border-light);
     border-radius: 12px;
     padding: var(--spacing-lg);
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
 
 .issue-item:hover {
@@ -952,11 +937,12 @@ textarea.form-input {
 }
 
 .product-card {
-    background: var(--pale-green);
-    border: 2px solid var(--light-green);
+    background: var(--bg-white);
+    border: 2px solid var(--border-light);
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
 
 .product-card:hover {
@@ -1074,10 +1060,11 @@ textarea.form-input {
 }
 
 .submit-form {
-    background: var(--pale-green);
+    background: var(--bg-light);
     padding: var(--spacing-xl);
     border-radius: 12px;
     max-width: 600px;
+    box-shadow: var(--shadow-sm);
 }
 
 .ideas-grid {
@@ -1087,11 +1074,12 @@ textarea.form-input {
 }
 
 .idea-card {
-    background: var(--pale-green);
+    background: var(--bg-white);
     padding: var(--spacing-lg);
     border-radius: 12px;
-    border: 2px solid var(--light-green);
+    border: 2px solid var(--border-light);
     transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
 
 .idea-card:hover {
@@ -1132,9 +1120,10 @@ textarea.form-input {
 .leaderboard-table {
     width: 100%;
     border-collapse: collapse;
-    background: var(--pale-green);
+    background: var(--bg-white);
     border-radius: 12px;
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
 }
 
 .leaderboard-table thead {
@@ -1150,11 +1139,11 @@ textarea.form-input {
 
 .leaderboard-table td {
     padding: var(--spacing-lg);
-    border-bottom: 1px solid var(--light-green);
+    border-bottom: 1px solid var(--border-light);
 }
 
 .leaderboard-table tr:hover {
-    background: var(--light-green);
+    background: var(--bg-light);
 }
 
 /* ============================================
@@ -1213,11 +1202,12 @@ textarea.form-input {
 }
 
 .knowledge-card {
-    background: var(--pale-green);
+    background: var(--bg-white);
     border-radius: 12px;
     overflow: hidden;
-    border: 2px solid var(--light-green);
+    border: 2px solid var(--border-light);
     transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
 
 .knowledge-card:hover {
@@ -1294,11 +1284,12 @@ textarea.form-input {
 }
 
 .technique-card {
-    background: var(--pale-green);
+    background: var(--bg-white);
     padding: var(--spacing-lg);
     border-radius: 12px;
-    border: 2px solid var(--light-green);
+    border: 2px solid var(--border-light);
     transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
 
 .technique-card:hover {
@@ -1330,11 +1321,12 @@ textarea.form-input {
 }
 
 .civic-card {
-    background: var(--pale-green);
+    background: var(--bg-white);
     padding: var(--spacing-lg);
     border-radius: 12px;
-    border: 2px solid var(--light-green);
+    border: 2px solid var(--border-light);
     transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
 
 .civic-card:hover {
@@ -1398,6 +1390,7 @@ textarea.form-input {
     border-radius: 12px;
     color: white;
     margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
 }
 
 .profile-avatar {
@@ -1423,11 +1416,12 @@ textarea.form-input {
 }
 
 .stat {
-    background: var(--pale-green);
+    background: var(--bg-light);
     padding: var(--spacing-lg);
     border-radius: 12px;
     text-align: center;
-    border: 2px solid var(--light-green);
+    border: 2px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
 }
 
 .stat-value {
@@ -1449,10 +1443,11 @@ textarea.form-input {
 }
 
 .profile-section {
-    background: var(--pale-green);
+    background: var(--bg-light);
     padding: var(--spacing-xl);
     border-radius: 12px;
-    border: 2px solid var(--light-green);
+    border: 2px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
 }
 
 .profile-section h3 {
@@ -1473,10 +1468,15 @@ textarea.form-input {
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    padding: var(--spacing-md);
+    background: var(--bg-white);
+    border-radius: 8px;
+    border: 2px solid var(--border-light);
 }
 
 .badge:hover {
     transform: scale(1.1);
+    border-color: var(--primary-green);
 }
 
 .badge-icon {
@@ -1660,4 +1660,18 @@ textarea:focus {
         transform: translateX(0);
         opacity: 1;
     }
+}
+
+/* Leaflet Map Overrides */
+.leaflet-container {
+    background: var(--bg-white);
+}
+
+.leaflet-popup-content {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
 }
