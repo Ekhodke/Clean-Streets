@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Streets - Civic Reporting & Volunteer Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-leaf"></i>
+                <span>Clean Streets</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showPage('home')" class="nav-link">Home</a></li>
+                <li><a href="#" onclick="showPage('report')" class="nav-link">Report Issue</a></li>
+                <li><a href="#" onclick="showPage('explore')" class="nav-link">Explore</a></li>
+                <li><a href="#" onclick="showPage('marketplace')" class="nav-link">Shop</a></li>
+                <li><a href="#" onclick="showPage('innovations')" class="nav-link">Innovations</a></li>
+                <li><a href="#" onclick="showPage('learn')" class="nav-link">Learn</a></li>
+                <li><a href="#" onclick="showPage('profile')" class="nav-link">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Make Our Streets Cleaner</h1>
+                <p>Report issues anonymously, mobilize volunteers, and create change together</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showPage('report')">
+                        <i class="fas fa-camera"></i> Report Issue
+                    </button>
+                    <button class="btn btn-secondary" onclick="showPage('explore')">
+                        <i class="fas fa-map"></i> View Map
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>100% Anonymous</h3>
+                    <p>Auto-strip EXIF data. Reports sent in company name, not yours.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-map-pin"></i>
+                    <h3>Smart Routing</h3>
+                    <p>Auto-detect ward jurisdiction. Community or Municipal based on risk.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Track Progress</h3>
+                    <p>Auto-escalate ignored issues to higher authorities.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Learn & Earn</h3>
+                    <p>Gain community service hours and learn civic best practices.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-item">
+                <h4>Reports Filed</h4>
+                <p class="stat-number">2,847</p>
+            </div>
+            <div class="stat-item">
+                <h4>Issues Resolved</h4>
+                <p class="stat-number">1,923</p>
+            </div>
+            <div class="stat-item">
+                <h4>Active Volunteers</h4>
+                <p class="stat-number">456</p>
+            </div>
+            <div class="stat-item">
+                <h4>Hours Contributed</h4>
+                <p class="stat-number">3,210</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Issue Page -->
+    <div id="report" class="page">
+        <div class="report-container">
+            <h2>Report an Issue</h2>
+            
+            <form id="reportForm" class="report-form">
+                <!-- Step 1: Issue Type -->
+                <div class="form-section active" id="step-1">
+                    <h3>Step 1: What's the Issue?</h3>
+                    <div class="issue-type-grid">
+                        <label class="issue-type-card">
+                            <input type="radio" name="issueType" value="plastic_waste" required>
+                            <i class="fas fa-trash"></i>
+                            <span>Plastic Waste</span>
+                        </label>
+                        <label class="issue-type-card">
+                            <input type="radio" name="issueType" value="dirt_roadside">
+                            <i class="fas fa-road"></i>
+                            <span>Dirt on Roadside</span>
+                        </label>
+                        <label class="issue-type-card">
+                            <input type="radio" name="issueType" value="park_cleanup">
+                            <i class="fas fa-tree"></i>
+                            <span>Park Cleanup</span>
+                        </label>
+                        <label class="issue-type-card">
+                            <input type="radio" name="issueType" value="pothole">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Pothole</span>
+                        </label>
+                        <label class="issue-type-card">
+                            <input type="radio" name="issueType" value="dark_street">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Dark Street/Light</span>
+                        </label>
+                        <label class="issue-type-card">
+                            <input type="radio" name="issueType" value="drainage">
+                            <i class="fas fa-water"></i>
+                            <span>Drainage Fault</span>
+                        </label>
+                        <label class="issue-type-card">
+                            <input type="radio" name="issueType" value="other">
+                            <i class="fas fa-plus"></i>
+                            <span>Other</span>
+                        </label>
+                    </div>
+                    <div id="otherIssueContainer" class="hidden">
+                        <textarea id="otherIssueText" placeholder="Please describe the issue..." class="form-input"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="nextStep(1)">Next</button>
+                </div>
+
+                <!-- Step 2: Location -->
+                <div class="form-section" id="step-2">
+                    <h3>Step 2: Where is the Issue? <span class="required">*</span></h3>
+                    <p class="form-help">Location is required to route your report correctly</p>
+                    
+                    <div class="location-input-group">
+                        <div id="map" class="map-preview"></div>
+                        <button type="button" class="btn btn-secondary" onclick="captureLocation()">
+                            <i class="fas fa-crosshairs"></i> Use Current Location
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Coordinates (Latitude, Longitude)</label>
+                        <input type="text" id="coordinates" class="form-input" placeholder="Enter or capture coordinates" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ward/Area Name (Auto-detected)</label>
+                        <input type="text" id="wardName" class="form-input" placeholder="Will auto-detect from coordinates" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Street/Landmark Details</label>
+                        <input type="text" id="locationDetails" class="form-input" placeholder="e.g., Near Central Park, Main Street">
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Photo Upload -->
+                <div class="form-section" id="step-3">
+                    <h3>Step 3: Upload Photo</h3>
+                    <p class="form-help">Photos help verify and prioritize issues. EXIF data will be automatically removed.</p>
+                    
+                    <div class="photo-upload-area" onclick="document.getElementById('photoInput').click()">
+                        <input type="file" id="photoInput" accept="image/*" hidden onchange="handlePhotoUpload(event)">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload or drag photo here</p>
+                        <small>JPG, PNG up to 10MB. EXIF data will be stripped.</small>
+                    </div>
+
+                    <div id="photoPreview" class="hidden">
+                        <img id="previewImage" src="" alt="Preview">
+                        <button type="button" class="btn btn-secondary btn-small" onclick="removePhoto()">Remove Photo</button>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Reporting Channel -->
+                <div class="form-section" id="step-4">
+                    <h3>Step 4: How Should This Be Fixed?</h3>
+                    <p class="form-help">Select based on safety and feasibility</p>
+                    
+                    <div class="channel-grid">
+                        <label class="channel-card">
+                            <input type="radio" name="reportChannel" value="volunteer" required>
+                            <i class="fas fa-users"></i>
+                            <h4>Ask for Volunteers</h4>
+                            <p>Community can fix this safely (cleanup, debris removal)</p>
+                        </label>
+                        <label class="channel-card">
+                            <input type="radio" name="reportChannel" value="government">
+                            <i class="fas fa-building"></i>
+                            <h4>Report to Government</h4>
+                            <p>Requires municipal action (potholes, infrastructure)</p>
+                        </label>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(4)">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(4)">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Volunteer Confirmation (if selected) -->
+                <div class="form-section" id="step-5-volunteer" class="hidden">
+                    <h3>Volunteer Mobilization</h3>
+                    <div class="volunteer-section">
+                        <h4>Safety Requirements</h4>
+                        <ul class="checklist">
+                            <li><strong>Required Equipment:</strong> Gloves, trash bags, safety vest (optional but recommended)</li>
+                            <li><strong>Team Size:</strong> Minimum 2 people recommended</li>
+                            <li><strong>Duration:</strong> Typically 1-2 hours</li>
+                        </ul>
+
+                        <h4>Liability Waiver</h4>
+                        <div class="waiver-box">
+                            <p>I understand the risks involved in participating in this cleanup activity and agree to assume full responsibility for my safety. I hereby release Clean Streets and all participating organizations from liability.</p>
+                            <label>
+                                <input type="checkbox" id="waiverCheckbox" required>
+                                I accept the liability waiver
+                            </label>
+                        </div>
+
+                        <h4>Certification</h4>
+                        <p>Upon completion, you'll receive a digital badge and community service hours certificate.</p>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(5)">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(5)">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 6: Truth & Legality Declaration -->
+                <div class="form-section" id="step-6">
+                    <h3>Step 6: Declaration & Verification</h3>
+                    
+                    <div class="truth-declaration">
+                        <h4>Issue Authenticity Declaration</h4>
+                        <div class="declaration-box">
+                            <p>I hereby declare that:</p>
+                            <ul>
+                                <li>✓ The issue I'm reporting is real and genuinely exists</li>
+                                <li>✓ The photograph(s) are authentic and not AI-generated or manipulated</li>
+                                <li>✓ The location coordinates are accurate</li>
+                                <li>✓ I am not making false reports for any purpose</li>
+                            </ul>
+
+                            <label class="truth-checkbox">
+                                <input type="checkbox" id="truthCheckbox" required>
+                                I certify that all information provided is true and accurate
+                            </label>
+                        </div>
+
+                        <div class="legal-notice">
+                            <p>By submitting this report, you agree to our terms. Please review our <a href="#" onclick="showLegalPage()">Privacy Policy & Legal Terms</a> before proceeding.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(6)">Back</button>
+                        <button type="submit" class="btn btn-success">Submit Report</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Legal Page Modal -->
+    <div id="legalModal" class="modal hidden">
+        <div class="modal-content legal-content">
+            <button class="modal-close" onclick="closeLegalPage()">&times;</button>
+            <h2>Privacy Policy & Legal Terms</h2>
+            
+            <div class="legal-sections">
+                <section>
+                    <h3>1. Anonymity & Data Privacy</h3>
+                    <p>Clean Streets is committed to protecting your identity. All reports are submitted anonymously:</p>
+                    <ul>
+                        <li>EXIF data (camera, GPS, metadata) is automatically stripped before submission</li>
+                        <li>Reports are filed under Clean Streets Inc., a registered legal entity</li>
+                        <li>No personal identifying information is transmitted or stored</li>
+                        <li>Your IP address and device information are not logged</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>2. Report Authenticity</h3>
+                    <p>False, AI-generated, or manipulated reports may result in:</p>
+                    <ul>
+                        <li>Permanent ban from the platform</li>
+                        <li>Legal action for filing false reports with authorities</li>
+                        <li>Loss of community service hours and badges</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>3. Volunteer Liability</h3>
+                    <p>By participating in volunteer activities:</p>
+                    <ul>
+                        <li>You assume all risks related to the cleanup activity</li>
+                        <li>You release Clean Streets and municipal authorities from liability</li>
+                        <li>You must follow all safety guidelines and use provided equipment</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>4. Image Rights</h3>
+                    <p>Photos you submit may be:</p>
+                    <ul>
+                        <li>Used for verification and progress tracking</li>
+                        <li>Displayed anonymously in public feeds</li>
+                        <li>Used for AI training (with opt-out option)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>5. AI Photo Verification</h3>
+                    <p>Clean Streets uses AI to verify photo authenticity for "before and after" cleanup logs. This includes detection of:</p>
+                    <ul>
+                        <li>AI-generated images</li>
+                        <li>Manipulated or doctored photos</li>
+                        <li>Severely filtered or altered content</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>6. Community Service Hours</h3>
+                    <p>Community service hours are:</p>
+                    <ul>
+                        <li>1 hour per cleanup participation</li>
+                        <li>Verified through photo documentation</li>
+                        <li>Can be exported as official certificates</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>7. Platform Misuse</h3>
+                    <p>The platform reserves the right to:</p>
+                    <ul>
+                        <li>Remove false or defamatory reports</li>
+                        <li>Ban users who abuse the system</li>
+                        <li>Report serious violations to authorities</li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="legal-acceptance">
+                <label>
+                    <input type="checkbox" id="acceptLegalCheckbox">
+                    I accept all terms and conditions
+                </label>
+                <button class="btn btn-primary" onclick="acceptLegalTerms()">Accept & Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Explore/Map Page -->
+    <div id="explore" class="page">
+        <div class="explore-container">
+            <h2>Issues Near You</h2>
+            <div id="exploreMap" class="map-container"></div>
+            <div class="issues-list">
+                <div class="issues-filter">
+                    <select id="issueFilter" onchange="filterIssues()">
+                        <option value="">All Issues</option>
+                        <option value="plastic_waste">Plastic Waste</option>
+                        <option value="dirt_roadside">Dirt on Roadside</option>
+                        <option value="park_cleanup">Park Cleanup</option>
+                        <option value="pothole">Pothole</option>
+                        <option value="dark_street">Dark Street</option>
+                        <option value="drainage">Drainage</option>
+                    </select>
+                </div>
+                <div id="issuesList" class="issues-items">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marketplace Page -->
+    <div id="marketplace" class="page">
+        <div class="marketplace-container">
+            <h2>Cleanup Supplies Marketplace</h2>
+            <p class="marketplace-subtitle">Buy or rent equipment for your cleanup activities. All proceeds support waste management initiatives.</p>
+
+            <div class="filter-section">
+                <input type="text" id="productSearch" placeholder="Search supplies..." class="form-input" onkeyup="filterProducts()">
+                <select id="categoryFilter" onchange="filterProducts()" class="form-input">
+                    <option value="">All Categories</option>
+                    <option value="grabbers">Grabbers</option>
+                    <option value="protection">Protection</option>
+                    <option value="containers">Containers</option>
+                    <option value="cleaning">Cleaning Tools</option>
+                </select>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Innovations Page -->
+    <div id="innovations" class="page">
+        <div class="innovations-container">
+            <h2>Innovation Challenge</h2>
+            <p class="subtitle">Submit your unique ideas for solving cleanliness issues. Win recognition and funding!</p>
+
+            <div class="innovation-tabs">
+                <button class="tab-btn active" onclick="switchTab('submit-idea')">Submit Idea</button>
+                <button class="tab-btn" onclick="switchTab('browse-ideas')">Browse Ideas</button>
+                <button class="tab-btn" onclick="switchTab('leaderboard')">Leaderboard</button>
+            </div>
+
+            <!-- Submit Idea Tab -->
+            <div id="submit-idea" class="tab-content active">
+                <div class="submit-form">
+                    <h3>Share Your Innovation</h3>
+                    <form id="ideaForm">
+                        <div class="form-group">
+                            <label>Innovation Title</label>
+                            <input type="text" class="form-input" placeholder="e.g., Solar-Powered Waste Compactor" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select class="form-input" required>
+                                <option value="">Select Category</option>
+                                <option value="technology">Technology</option>
+                                <option value="process">Process Improvement</option>
+                                <option value="education">Education</option>
+                                <option value="community">Community Engagement</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-input" rows="6" placeholder="Describe your innovation in detail..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Problem It Solves</label>
+                            <textarea class="form-input" rows="4" placeholder="What specific issue does this solve?" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Implementation Cost (Estimated)</label>
+                            <input type="number" class="form-input" placeholder="₹" min="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Upload Proof/Mockup</label>
+                            <div class="file-upload" onclick="document.getElementById('ideaFile').click()">
+                                <input type="file" id="ideaFile" hidden>
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload image or document</p>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit Innovation</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Browse Ideas Tab -->
+            <div id="browse-ideas" class="tab-content">
+                <div class="ideas-grid" id="ideasGrid">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+
+            <!-- Leaderboard Tab -->
+            <div id="leaderboard" class="tab-content">
+                <div class="leaderboard">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Innovation</th>
+                                <th>Creator</th>
+                                <th>Votes</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardBody">
+                            <!-- Dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learn Page -->
+    <div id="learn" class="page">
+        <div class="learn-container">
+            <h2>Education Hub</h2>
+            <p class="subtitle">Learn proper waste management and cleanup techniques</p>
+
+            <div class="learn-tabs">
+                <button class="tab-btn active" onclick="switchLearnTab('waste')">Waste Segregation</button>
+                <button class="tab-btn" onclick="switchLearnTab('cleanup')">Cleanup Techniques</button>
+                <button class="tab-btn" onclick="switchLearnTab('hazards')">Civic Knowledge</button>
+            </div>
+
+            <!-- Waste Segregation -->
+            <div id="waste" class="tab-content active">
+                <div class="video-section">
+                    <h3>Proper Waste Segregation</h3>
+                    <div class="video-container">
+                        <iframe class="video-player" src="https://www.youtube.com/embed/videoseries?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="cards-grid">
+                        <div class="knowledge-card">
+                            <div class="card-header green">
+                                <i class="fas fa-leaf"></i>
+                                <h4>Green Waste</h4>
+                            </div>
+                            <ul class="card-list">
+                                <li>Food scraps</li>
+                                <li>Dried leaves</li>
+                                <li>Plant cuttings</li>
+                                <li>Paper & cardboard</li>
+                            </ul>
+                            <p class="card-footer">Composted for soil enrichment</p>
+                        </div>
+
+                        <div class="knowledge-card">
+                            <div class="card-header blue">
+                                <i class="fas fa-recycle"></i>
+                                <h4>Blue Waste</h4>
+                            </div>
+                            <ul class="card-list">
+                                <li>Plastic bottles</li>
+                                <li>Metal cans</li>
+                                <li>Glass</li>
+                                <li>Aluminum</li>
+                            </ul>
+                            <p class="card-footer">Recycled into new products</p>
+                        </div>
+
+                        <div class="knowledge-card">
+                            <div class="card-header red">
+                                <i class="fas fa-ban"></i>
+                                <h4>Red Waste</h4>
+                            </div>
+                            <ul class="card-list">
+                                <li>Medical waste</li>
+                                <li>Hazardous materials</li>
+                                <li>E-waste</li>
+                                <li>Chemicals</li>
+                            </ul>
+                            <p class="card-footer">Special handling required</p>
+                        </div>
+
+                        <div class="knowledge-card">
+                            <div class="card-header gray">
+                                <i class="fas fa-trash"></i>
+                                <h4>Black Waste</h4>
+                            </div>
+                            <ul class="card-list">
+                                <li>Non-recyclable items</li>
+                                <li>Contaminated materials</li>
+                                <li>Construction debris</li>
+                                <li>General litter</li>
+                            </ul>
+                            <p class="card-footer">Disposed responsibly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cleanup Techniques -->
+            <div id="cleanup" class="tab-content">
+                <div class="video-section">
+                    <h3>Safe Cleanup Techniques</h3>
+                    <div class="video-container">
+                        <iframe class="video-player" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="technique-cards">
+                        <div class="technique-card">
+                            <h4>Personal Safety</h4>
+                            <ol>
+                                <li>Always wear gloves</li>
+                                <li>Use safety vest for visibility</li>
+                                <li>Avoid sharp objects</li>
+                                <li>Wash hands after cleanup</li>
+                            </ol>
+                        </div>
+
+                        <div class="technique-card">
+                            <h4>Efficient Collection</h4>
+                            <ol>
+                                <li>Use grabber tools for reaching</li>
+                                <li>Sort waste on-site when possible</li>
+                                <li>Fill bags gradually</li>
+                                <li>Keep pathways clear</li>
+                            </ol>
+                        </div>
+
+                        <div class="technique-card">
+                            <h4>Proper Disposal</h4>
+                            <ol>
+                                <li>Segregate as instructed</li>
+                                <li>Tie bags securely</li>
+                                <li>Use designated bins</li>
+                                <li>Dispose safely</li>
+                            </ol>
+                        </div>
+
+                        <div class="technique-card">
+                            <h4>Area Restoration</h4>
+                            <ol>
+                                <li>Sweep thoroughly</li>
+                                <li>Check for hidden litter</li>
+                                <li>Document before/after</li>
+                                <li>Leave area cleaner</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Civic Knowledge -->
+            <div id="hazards" class="tab-content">
+                <div class="civic-cards">
+                    <div class="civic-card">
+                        <h4>What is a Pothole?</h4>
+                        <p><strong>Definition:</strong> A hole or depression in the road surface caused by water infiltration and traffic damage.</p>
+                        <p><strong>Why It Matters:</strong> Potholes cause accidents, vehicle damage, and water pooling.</p>
+                        <p><strong>How to Fix:</strong> Professional road patching with asphalt. Requires municipal action.</p>
+                        <p><strong>Action:</strong> <span class="badge-gov">Report to Government</span></p>
+                    </div>
+
+                    <div class="civic-card">
+                        <h4>Dark/Unlit Streets</h4>
+                        <p><strong>Definition:</strong> Areas lacking adequate street lighting, affecting safety.</p>
+                        <p><strong>Why It Matters:</strong> Increases crime, accidents, and reduces foot traffic.</p>
+                        <p><strong>How to Fix:</strong> Installation of street lights and electrical work. Requires municipal action.</p>
+                        <p><strong>Action:</strong> <span class="badge-gov">Report to Government</span></p>
+                    </div>
+
+                    <div class="civic-card">
+                        <h4>Drainage Issues</h4>
+                        <p><strong>Definition:</strong> Blocked or faulty drainage causing water pooling and overflow.</p>
+                        <p><strong>Why It Matters:</strong> Leads to flooding, disease spread, and property damage.</p>
+                        <p><strong>How to Fix:</strong> Professional drain cleaning and repair. Requires municipal action.</p>
+                        <p><strong>Action:</strong> <span class="badge-gov">Report to Government</span></p>
+                    </div>
+
+                    <div class="civic-card">
+                        <h4>Plastic Waste Accumulation</h4>
+                        <p><strong>Definition:</strong> Build-up of plastic materials in public spaces.</p>
+                        <p><strong>Why It Matters:</strong> Environmental hazard, impacts wildlife, pollutes soil.</p>
+                        <p><strong>How to Fix:</strong> Community cleanup and proper segregation. Volunteers can help!</p>
+                        <p><strong>Action:</strong> <span class="badge-community">Ask for Volunteers</span></p>
+                    </div>
+
+                    <div class="civic-card">
+                        <h4>Roadside Dirt & Debris</h4>
+                        <p><strong>Definition:</strong> Accumulated dirt, leaves, and debris on roadsides.</p>
+                        <p><strong>Why It Matters:</strong> Affects aesthetics and can harbor disease vectors.</p>
+                        <p><strong>How to Fix:</strong> Regular sweeping and debris collection. Community can help!</p>
+                        <p><strong>Action:</strong> <span class="badge-community">Ask for Volunteers</span></p>
+                    </div>
+
+                    <div class="civic-card">
+                        <h4>Park Maintenance Issues</h4>
+                        <p><strong>Definition:</strong> Parks lacking proper upkeep, cleanliness, or maintenance.</p>
+                        <p><strong>Why It Matters:</strong> Reduces community usage and quality of life.</p>
+                        <p><strong>How to Fix:</strong> Community-led cleanup initiatives. Get volunteers involved!</p>
+                        <p><strong>Action:</strong> <span class="badge-community">Ask for Volunteers</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profile" class="page">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="profile-info">
+                    <h2 id="profileName">Anonymous Civic Hero</h2>
+                    <p id="profileStatus">Active Contributor</p>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat">
+                    <div class="stat-value" id="reportsCount">0</div>
+                    <div class="stat-label">Reports Filed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="volunteersCount">0</div>
+                    <div class="stat-label">Cleanups Joined</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="hoursCount">0</div>
+                    <div class="stat-label">Service Hours</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="badgesCount">0</div>
+                    <div class="stat-label">Badges Earned</div>
+                </div>
+            </div>
+
+            <div class="profile-sections">
+                <section class="profile-section">
+                    <h3>Badges & Achievements</h3>
+                    <div class="badges-grid" id="badgesGrid">
+                        <!-- Dynamically populated -->
+                    </div>
+                </section>
+
+                <section class="profile-section">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-list" id="activityList">
+                        <!-- Dynamically populated -->
+                    </div>
+                </section>
+
+                <section class="profile-section">
+                    <h3>Community Service Certificate</h3>
+                    <div class="certificate-box">
+                        <p>Download your official community service hours certificate for use in applications, college applications, or employment.</p>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Download Certificate
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
